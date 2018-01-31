@@ -15,18 +15,6 @@ module.exports = {
     root: path.join(__dirname, 'node_modules')
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.vue$/,
-        loader: 'eslint',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.js$/,
-        loader: 'eslint',
-        exclude: /node_modules/
-      }
-    ],
     loaders: [
       {
         test: /\.js$/,
@@ -53,9 +41,6 @@ module.exports = {
     ]
   },
   devtool: 'eval-source-map',
-  eslint: {
-    formatter: require('eslint-friendly-formatter')
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ]
