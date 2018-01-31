@@ -1,5 +1,8 @@
 <template>
     <sign-in v-if="!auth" />
+	<div v-else>
+		<h1>Jesteś zalogowany</h1>
+	</div>
 </template>
 
 <script>

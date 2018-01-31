@@ -6,6 +6,9 @@
 			</div>
 			<v-card>
 				<v-card-title>
+                    <v-alert color="error" icon="warning" value="true" dismissible v-model="alert">
+                        Pan mnie chciał oszukać! Podane dane są nieprawidłowe albo użytkownik o takiej nazwie już istnieje. 
+                    </v-alert>
 					<v-form class="w-100">
 						<v-text-field label="Nazwa użytkownika" v-model="form.username" required></v-text-field>
 						<v-text-field label="Hasło" v-model="form.password" type="password" required></v-text-field>
@@ -33,15 +36,17 @@
                     username: '',
                     password: '',
                     repeat_password: ''
-                }
+                },
+                alert: false
             }
         },
         methods: {
             submit() {
                 this.$http.post('/api/user', JSON.stringify(this.form)).then(({ body }) => {
-                    console.log(body);
+                    this.$store.commit('set_user', body);
+                    this.$router.push({name: 'homesite'})
                 }).catch(err => {
-                    console.log(err);  
+                    this.alert = true;  
                 });
             }
         }

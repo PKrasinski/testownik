@@ -1,6 +1,7 @@
 // State
 const state = {
-    auth: false
+    auth: false,
+    user: {}
 }
 
 // Getters
@@ -14,7 +15,12 @@ const getters = {
 const actions = {}
 
 // Mutations
-const mutations = {}
+const mutations = {
+    set_user(state, user) {
+        state.user = user;
+        state.auth = true;
+    }
+}
 
 export default {
     state,
