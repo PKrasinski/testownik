@@ -7,8 +7,8 @@
 			<v-card>
 				<v-card-title>
 					<v-form class="w-100">
-						<v-text-field label="E-mail" v-model="email" required></v-text-field>
-						<v-text-field label="Hasło" v-model="password" required></v-text-field>
+						<v-text-field label="Nazwa użytkownika" v-model="login" required></v-text-field>
+						<v-text-field label="Hasło" v-model="password" type="password" required></v-text-field>
 					</v-form>
 				</v-card-title>
 				<v-card-actions>
@@ -28,7 +28,7 @@
 	export default {
 		data() {
 			return {
-				email: '',
+				login: '',
 				password: ''
 			}
 		}
