@@ -31,7 +31,6 @@ export function addUser (data, cb) {
 
 export function exist({ username }, cb) {
     User.findOne({ username }, (err, user) => {
-        console.log(user);
         cb( user ? true : false );
     })
 }
