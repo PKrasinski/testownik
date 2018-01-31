@@ -7,9 +7,9 @@
 			<v-card>
 				<v-card-title>
 					<v-form class="w-100">
-						<v-text-field label="Nazwa użytkownika" v-model="login" required></v-text-field>
-						<v-text-field label="Hasło" v-model="password" type="password" required></v-text-field>
-						<v-text-field label="Powtórz hasło" v-model="repeat_password" type="plain_password" required></v-text-field>
+						<v-text-field label="Nazwa użytkownika" v-model="form.username" required></v-text-field>
+						<v-text-field label="Hasło" v-model="form.password" type="password" required></v-text-field>
+						<v-text-field label="Powtórz hasło" v-model="form.repeat_password" type="password" required></v-text-field>
 					</v-form>
 				</v-card-title>
 				<v-card-actions>
@@ -29,14 +29,20 @@
 	export default {
 		data() {
 			return {
-				login: '',
-                password: '',
-                repeat_password: ''
-			}
+                form: {
+                    username: '',
+                    password: '',
+                    repeat_password: ''
+                }
+            }
         },
         methods: {
             submit() {
-                console.log(this.$http);
+                this.$http.post('/api/user', JSON.stringify(this.form)).then(({ body }) => {
+                    console.log(body);
+                }).catch(err => {
+                    console.log(err);  
+                });
             }
         }
 	}
