@@ -38,9 +38,11 @@ export function AUTH_USER(req, res) {
             res.status(400).json({ error: 'User don\'t exist' });
             return;
         }
-        if (userData.password != user.password)
-            res.status(400).json({ error: 'Bad password' });
+        if(userData.token)
+            res.status(200).json(user.getToResponse());
+        else if (userData.password == user.password)
+            res.status(200).json(user.getToResponse());
         else
-            res.status(201).json(user.getToResponse());
+            res.status(400).json({ error: 'Bad password' });
     })
 }
