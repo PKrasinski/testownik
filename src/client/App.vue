@@ -1,11 +1,31 @@
 <template>
-    <v-app light v-if="ready">
+    <v-app :dark="dark" v-if="ready">
+		<v-fab-transition>
+			<v-btn
+				fab
+				fixed
+				top
+				right
+				small
+				color="orange"
+				v-model="dark"
+				@click="dark = !dark"
+			>
+				<v-icon>code</v-icon>
+				<v-icon>person</v-icon>
+			</v-btn>
+    	</v-fab-transition>
 		<router-view></router-view>
   	</v-app>
 </template>
 
 <script>
 export default {
+	data () {
+		return {
+			dark: false
+		}
+	},
 	computed: {
 		ready () {
 			return this.$store.getters.auth_component_ready;

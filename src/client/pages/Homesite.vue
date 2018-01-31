@@ -9,7 +9,7 @@
 				<v-card>
 					<v-card-title>
 						<v-flex xs12 sm8 mb-2>
-							<v-progress-linear value="75" height="10" color="error"/>
+							<v-progress-linear value="75" height="10" color="success"/>
 						</v-flex>
 						<v-flex xs4 sm1 offset-sm1 class="text-xs-center">
 							<v-badge color="green" left overlay overlap>
@@ -31,7 +31,8 @@
 						</v-flex>
 					</v-card-title>
 					<v-card-text>
-						Test
+						<h4>{{task.question}}</h4>
+						<v-checkbox v-for="(answer, index) in task.answers" :key="index" :label="answer.answer" v-model="checkboxes[index]" ></v-checkbox>
 					</v-card-text>
 					<v-card-actions right>
 						<v-spacer></v-spacer>
@@ -49,6 +50,11 @@ import SignIn from '../components/SignIn'
 import Navbar from '../components/Navbar'
 
 export default {
+	data () {
+		return {
+			checkboxes:[false, false, false, false, false]
+		}
+	},
 	components: {
 		SignIn,
 		Navbar
@@ -59,6 +65,12 @@ export default {
 		},
 		user () {
 			return this.$store.getters.user;
+		},
+		task () {
+			return this.$store.getters.task;
+		},
+		stats () {
+			return this.$store.getters.stats;
 		}
 	}
 }

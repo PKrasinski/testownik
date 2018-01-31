@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import db from './db'
 
 // State
 const state = {
@@ -17,6 +18,12 @@ const getters = {
     },
     user() {
         return state.user;
+    },
+    task() {
+        return db[state.user.tasks[0]];
+    },
+    stats() {
+        return state.user.stats;
     }
 }
 
