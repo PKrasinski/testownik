@@ -1,11 +1,20 @@
 <template>
-    <v-app light>
+    <v-app light v-if="ready">
 		<router-view></router-view>
   	</v-app>
 </template>
 
 <script>
-export default {}
+export default {
+	computed: {
+		ready () {
+			return this.$store.getters.auth_component_ready;
+		}
+	},
+	beforeCreate() {
+		this.$store.dispatch('auth')
+	}
+}
 </script>
 
 <style>
