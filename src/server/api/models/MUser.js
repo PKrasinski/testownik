@@ -7,13 +7,20 @@ mongoose.connect(MONGODB_URI);
 const userSchema = mongoose.Schema({
     username: String,
     password: String,
-    tasks: [Number]
+    questions: [],
+    stats: {
+        type: Object,
+        default: {
+            correct: 0,
+            wrong: 0
+        }
+    }
 })
 
 userSchema.methods.getToResponse = function () {
     return {
         username: this.username,
-        tasks: this.tasks,
+        questions: this.questions,
         token: getJWT(this._id)
     }
 }

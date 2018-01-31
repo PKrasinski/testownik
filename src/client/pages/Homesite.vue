@@ -31,8 +31,8 @@
 						</v-flex>
 					</v-card-title>
 					<v-card-text>
-						<h4>{{task.question}}</h4>
-						<v-checkbox v-for="(answer, index) in task.answers" :key="index" :label="answer.answer" v-model="checkboxes[index]" ></v-checkbox>
+						<h4>{{question.question}}</h4>
+						<v-checkbox v-for="(answer, index) in question.answers" :key="index" :label="answer.answer" v-model="checkboxes[index]" ></v-checkbox>
 					</v-card-text>
 					<v-card-actions right>
 						<v-spacer></v-spacer>
@@ -66,8 +66,8 @@ export default {
 		user () {
 			return this.$store.getters.user;
 		},
-		task () {
-			return this.$store.getters.task;
+		question () {
+			return this.$store.getters.question;
 		},
 		stats () {
 			return this.$store.getters.stats;

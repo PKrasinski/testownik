@@ -19,8 +19,8 @@ const getters = {
     user() {
         return state.user;
     },
-    task() {
-        return db[state.user.tasks[0]];
+    question() {
+        return db[state.user.questions[0]];
     },
     stats() {
         return state.user.stats;

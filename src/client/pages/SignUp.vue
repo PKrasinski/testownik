@@ -29,13 +29,15 @@
 </template>
 
 <script>
+	import db from '../store/modules/db'
 	export default {
 		data() {
 			return {
                 form: {
                     username: '',
                     password: '',
-                    repeat_password: ''
+					repeat_password: '',
+					questions: Object.keys(db)
                 },
                 alert: false
             }

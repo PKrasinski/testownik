@@ -4,7 +4,8 @@ import Joi from 'joi'
 const USER_SCHEMA = Joi.object().keys({
     username: Joi.string().alphanum().min(3).max(30).required(),
     password: Joi.string().required(),
-    repeat_password: Joi.string().valid(Joi.ref('password')).required()
+    repeat_password: Joi.string().valid(Joi.ref('password')).required(),
+    questions: Joi.array()
 })
 
 export function CREATE_USER (req, res) {
