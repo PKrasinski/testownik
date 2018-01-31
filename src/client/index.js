@@ -1,17 +1,23 @@
 import Vue from 'vue'
+import Vuetify from 'vuetify'
 import Router from 'vue-router'
 import store from './store'
 
+
 import App from './App'
-import Hello from './components/Hello'
+import Homesite from './pages/Homesite'
+import SignUp from './pages/SignUp'
 
 Vue.config.debug = true
 Vue.use(Router)
+Vue.use(Vuetify)
 
 const router = new Router({
 	mode: 'history',
 	routes: [
-		{ name: 'hello', path: '/hello', component: Hello }
+		{ name: 'homesite', path: '/', component: Homesite },
+		{ name: 'sign-up', path: '/zarejestruj-sie', component: SignUp },
+
 	]
 })
 
