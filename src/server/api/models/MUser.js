@@ -34,3 +34,16 @@ export function exist({ username }, cb) {
         cb( user ? true : false );
     })
 }
+
+export function getUser({ username, id }, cb) {
+    if(username)
+        User.findOne({ username }, (err, user) => {
+            if(err) cb(true)
+            else cb(false, user);
+        })
+    else if(id)
+        User.findById(id, (err, user) => {
+            if (err) cb(true)
+            else cb(false, user);
+        })
+}

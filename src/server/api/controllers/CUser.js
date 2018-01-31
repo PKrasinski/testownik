@@ -1,4 +1,4 @@
-import { addUser, exist } from '../models/MUser'
+import { addUser, exist, getUser } from '../models/MUser'
 import Joi from 'joi'
 
 const USER_SCHEMA = Joi.object().keys({
@@ -27,5 +27,20 @@ export function CREATE_USER (req, res) {
                 res.status(201).json(user);
             })
         })
+    })
+}
+
+export function AUTH_USER(req, res) {
+    const userData = req.body;
+
+    getUser(userData, (err, user) => {
+        if (err) {
+            res.status(400).json({ error: 'User don\'t exist' });
+            return;
+        }
+        if (userData.password != user.password)
+            res.status(400).json({ error: 'Bad password' });
+        else
+            res.status(201).json(user.getToResponse());
     })
 }
