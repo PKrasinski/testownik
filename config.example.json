@@ -1,3 +1,4 @@
 {
-    "MONGODB_URI": "mongodb://root:root@localhost:3204/testownik"
+    "MONGODB_URI": "mongodb://root:root@localhost:3204/testownik",
+    "SECRET_KEY": "secret"
 }
