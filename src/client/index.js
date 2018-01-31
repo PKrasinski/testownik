@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
+import http from 'vue-resource'
 import Router from 'vue-router'
 import store from './store'
 
@@ -11,6 +12,7 @@ import SignUp from './pages/SignUp'
 Vue.config.debug = true
 Vue.use(Router)
 Vue.use(Vuetify)
+Vue.use(http)
 
 const router = new Router({
 	mode: 'history',
