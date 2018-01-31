@@ -14,6 +14,9 @@ const getters = {
     },
     auth_component_ready() {
         return state.ready;
+    },
+    user() {
+        return state.user;
     }
 }
 
@@ -23,7 +26,7 @@ const actions = {
         const token = Vue.cookie.get('token')
         if(token) {
             Vue.http.post('/api/auth', JSON.stringify({token})).then(({ body }) => {
-                this.$store.commit('set_user', body);
+                commit('set_user', body);
                 state.ready = true;
             }).catch(err => {
                 Vue.cookie.delete('token');
@@ -31,7 +34,7 @@ const actions = {
             });
         }
         else
-            state.ready = true;
+        state.ready = true;
     }
 }
 
@@ -41,6 +44,11 @@ const mutations = {
         state.user = user;
         state.auth = true;
         Vue.cookie.set('token', user.token, 1);
+    },
+    logout(state) {
+        state.user = {};
+        state.auth = false;
+        Vue.cookie.delete('token');
     }
 }
 
