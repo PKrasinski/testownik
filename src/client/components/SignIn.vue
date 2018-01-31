@@ -6,6 +6,9 @@
 			</div>
 			<v-card>
 				<v-card-title>
+					<v-alert color="error" icon="warning" value="true" dismissible v-model="alert">
+                        Pan mnie chciał oszukać! Podane dane są nieprawidłowe. 
+                    </v-alert>
 					<v-form class="w-100">
 						<v-text-field label="Nazwa użytkownika" v-model="form.username" required></v-text-field>
 						<v-text-field label="Hasło" v-model="form.password" type="password" required></v-text-field>
@@ -31,12 +34,17 @@
 				form: {
 					username: '',
 					password: ''
-				}
+				},
+                alert: false
 			}
 		},
 		methods: {
 			submit () {
-				this.$http.post('/api/auth', JSON.stringify(this.form))
+				this.$http.post('/api/auth', JSON.stringify(this.form)).then(({ body }) => {
+                    this.$store.commit('set_user', body);
+                }).catch(err => {
+                    this.alert = true;  
+                });
 			}
 		}
 	}
