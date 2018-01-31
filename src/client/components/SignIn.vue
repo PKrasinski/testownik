@@ -7,12 +7,12 @@
 			<v-card>
 				<v-card-title>
 					<v-form class="w-100">
-						<v-text-field label="Nazwa użytkownika" v-model="login" required></v-text-field>
-						<v-text-field label="Hasło" v-model="password" type="password" required></v-text-field>
+						<v-text-field label="Nazwa użytkownika" v-model="form.username" required></v-text-field>
+						<v-text-field label="Hasło" v-model="form.password" type="password" required></v-text-field>
 					</v-form>
 				</v-card-title>
 				<v-card-actions>
-					<v-btn flat color="orange">Zaloguj się</v-btn>
+					<v-btn flat color="orange" @click="submit">Zaloguj się</v-btn>
 				</v-card-actions>
 			</v-card>
 			<div class="my-3 text-xs-center">
@@ -28,8 +28,15 @@
 	export default {
 		data() {
 			return {
-				login: '',
-				password: ''
+				form: {
+					username: '',
+					password: ''
+				}
+			}
+		},
+		methods: {
+			submit () {
+				this.$http.post('/api/auth', JSON.stringify(this.form))
 			}
 		}
 	}
