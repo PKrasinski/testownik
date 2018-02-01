@@ -61,13 +61,11 @@
 				</v-card>
 			</v-flex>
 		</v-layout>
-		<navbar/>
 	</div>
 </template>
 
 <script>
 import SignIn from '../components/SignIn'
-import Navbar from '../components/Navbar'
 
 export default {
 	data () {
@@ -77,8 +75,7 @@ export default {
 		}
 	},
 	components: {
-		SignIn,
-		Navbar
+		SignIn
 	},
 	computed: {
 		auth () {
@@ -100,9 +97,11 @@ export default {
 	methods: {
 		next() {
 			if(this.correct)
-				this.$store.commit('correct');
+				this.$store.dispatch('correct');
 			else
-				this.$store.commit('incorrect')
+				this.$store.dispatch('incorrect')
+			this.check = false;
+			this.checkboxes = this.checkboxes.map( e => false)
 		}
 	}
 }

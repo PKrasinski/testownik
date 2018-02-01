@@ -16,10 +16,12 @@
 			</v-btn>
     	</v-fab-transition>
 		<router-view></router-view>
+		<navbar v-if="auth"/>
   	</v-app>
 </template>
 
 <script>
+import Navbar from './components/Navbar'
 export default {
 	data () {
 		return {
@@ -29,10 +31,16 @@ export default {
 	computed: {
 		ready () {
 			return this.$store.getters.auth_component_ready;
+		},
+		auth () {
+			return this.$store.getters.is_auth;
 		}
 	},
 	beforeCreate() {
 		this.$store.dispatch('auth')
+	},
+	components: {
+		Navbar
 	}
 }
 </script>

@@ -8,6 +8,7 @@ import VueCookie from 'vue-cookie'
 import App from './App'
 import Homesite from './pages/Homesite'
 import SignUp from './pages/SignUp'
+import Settings from './pages/Settings'
 
 Vue.config.debug = true
 Vue.use(Router)
@@ -20,6 +21,7 @@ const router = new Router({
 	routes: [
 		{ name: 'homesite', path: '/', component: Homesite },
 		{ name: 'sign-up', path: '/zarejestruj-sie', component: SignUp },
+		{ name: 'settings', path: '/ustawienia', component: Settings },
 
 	]
 })

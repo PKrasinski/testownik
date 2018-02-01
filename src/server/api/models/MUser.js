@@ -14,6 +14,12 @@ const userSchema = mongoose.Schema({
             correct: 0,
             wrong: 0
         }
+    },
+    settings: {
+        type: Object,
+        default: {
+            multiplyAfterMistake: 3
+        }
     }
 })
 
@@ -22,6 +28,7 @@ userSchema.methods.getToResponse = function () {
         username: this.username,
         questions: this.questions,
         stats: this.stats,
+        settings: this.settings,
         token: getJWT(this._id)
     }
 }

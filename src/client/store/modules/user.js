@@ -1,6 +1,14 @@
 import Vue from 'vue'
 import db from './db'
 
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
 // State
 const state = {
     auth: false,
@@ -44,6 +52,17 @@ const actions = {
         }
         else
         state.ready = true;
+    },
+    update({state}) {
+        
+    }, 
+    correct({state, dispatch}) {
+        state.user.stats.correct += 1;
+        state.user.questions.shift();
+        state.user.questions = shuffle(state.user.questions);
+    },
+    discorrect({state}) {
+
     }
 }
 
@@ -58,13 +77,6 @@ const mutations = {
         state.user = {};
         state.auth = false;
         Vue.cookie.delete('token');
-    },
-    correct(state) {
-        state.user.stats.correct += 1;
-        state.user.questions.shift();
-    },
-    discorrect() {
-
     }
 }
 
