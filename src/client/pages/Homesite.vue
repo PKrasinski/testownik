@@ -34,7 +34,7 @@
 						<h4>{{question.question}}</h4>
 						<v-list>
 							<v-list-tile 
-								v-for="(answer, index) in question.answers" 
+								v-for="(answer, index) in answers" 
 								:key="index" 
 								:class="{
 									'error': check && checkboxes[index] != answer.correct,
@@ -71,6 +71,15 @@
 <script>
 import SignIn from '../components/SignIn'
 
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+
 export default {
 	data () {
 		return {
@@ -91,11 +100,14 @@ export default {
 		question () {
 			return this.$store.getters.question;
 		},
+		answers () {
+			return shuffle(this.question.answers);
+		},
 		stats () {
 			return this.$store.getters.stats;
 		},
 		correct () {
-			return this.checkboxes.filter((val, index) => val != this.question.answers[index].correct).length == 0;
+			return this.question.answers.filter((val, index) => val.correct != this.checkboxes[index]).length == 0;
 		}
 	},
 	methods: {
