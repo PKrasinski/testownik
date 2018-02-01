@@ -34,6 +34,9 @@ const getters = {
         const stats = state.user.stats;
         stats.to_learn = state.user.questions.length;
         return stats;
+    },
+    settings() {
+        return state.user.settings;
     }
 }
 
@@ -54,15 +57,34 @@ const actions = {
         state.ready = true;
     },
     update({state}) {
-        
+        Vue.http.put('/api/user', state.user)
     }, 
     correct({state, dispatch}) {
         state.user.stats.correct += 1;
         state.user.questions.shift();
         state.user.questions = shuffle(state.user.questions);
+        dispatch('update')
     },
-    discorrect({state}) {
-
+    incorrect({ state, dispatch}) {
+        state.user.stats.wrong += 1;
+        const id = state.user.questions.shift();
+        const repeat = state.user.settings.multiplyAfterMistake;
+        for(let i = 0; i < repeat; i++)
+        state.user.questions.push(id);
+        state.user.questions = shuffle(state.user.questions);
+        dispatch('update')
+    },
+    set_settings({ state, dispatch}, settings) {
+        state.user.settings = settings;
+        dispatch('update')
+    },
+    reset({state, dispatch}) {
+        state.user.questions = shuffle(Object.keys(db));
+        state.user.stats = {
+            correct: 0,
+            wrong: 0
+        }
+        dispatch('update')
     }
 }
 

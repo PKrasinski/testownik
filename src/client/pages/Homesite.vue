@@ -9,7 +9,7 @@
 				<v-card>
 					<v-card-title>
 						<v-flex xs12 sm8 mb-2>
-							<v-progress-linear :value="parseInt(stats.correct  / stats.to_learn * 100)" height="10" color="success"/>
+							<v-progress-linear :value="parseInt(stats.correct  / (stats.to_learn + stats.correct) * 100)" height="10" color="success"/>
 						</v-flex>
 						<v-flex xs4 sm1 offset-sm1 class="text-xs-center">
 							<v-badge color="green" left overlay overlap>
@@ -30,7 +30,7 @@
 							</v-badge>
 						</v-flex>
 					</v-card-title>
-					<v-card-text>
+					<v-card-text v-if="question">
 						<h4>{{question.question}}</h4>
 						<v-list>
 							<v-list-tile 
@@ -53,7 +53,11 @@
 							</v-list-tile>
 						</v-list>
 					</v-card-text>
-					<v-card-actions right>
+					<v-card-text v-else class="py-5 text-xs-center">
+						<h2>Gratulację!</h2>
+						<v-btn  flat color="orange" @click="$store.dispatch('reset')">Rozpocznij od nowa</v-btn>
+					</v-card-text>
+					<v-card-actions v-if="question">
 						<v-spacer></v-spacer>
 						<v-btn v-if="!check" flat color="orange" @click="check = true">Sprawdź</v-btn>
 						<v-btn v-else flat color="orange" @click="next">Następne pytanie</v-btn>

@@ -8,21 +8,34 @@
 				</div>
 				<v-card>
 					<v-card-title>
-						
+						<h2>Ustawienia</h2>
 					</v-card-title>
 					<v-card-text>
-						<h4></h4>
+						<v-form class="w-100">
+							<v-text-field :label="`Powtórz ${settings.multiplyAfterMistake} razy po pomyłce`" type="number" v-model="settings.multiplyAfterMistake" required></v-text-field>
+						</v-form>
 					</v-card-text>
+					<v-card-actions>
+						<v-btn flat color="orange" @click="reset">Rozpocznij od nowa</v-btn>
+						<v-spacer></v-spacer>
+						<v-btn flat color="orange" @click="save">Zapisz</v-btn>
+					</v-card-actions>
 				</v-card>
 			</v-flex>
 		</v-layout>
-		<navbar/>
 	</div>
 </template>
 
 <script>
 
 export default {
+	data () {
+		return {
+			settings: {
+				repeat: 0
+			}
+		}
+	},
 	computed: {
 		auth () {
 			return this.$store.getters.is_auth;
@@ -31,6 +44,21 @@ export default {
 			return this.$store.getters.user;
 		}
 	},
+	created () {
+		this.settings = this.$store.getters.settings;
+	},
+	methods: {
+		save() {
+			if(this.settings.multiplyAfterMistake > 10)
+				this.settings.multiplyAfterMistake = 10;
+			this.$store.dispatch('set_settings', this.settings);
+			this.$router.push({name:'homesite'})
+		},
+		reset() {
+			this.$store.dispatch('reset')
+			this.$router.push({name:'homesite'})
+		}
+	}
 }
 </script>
 
