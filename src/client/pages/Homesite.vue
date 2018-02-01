@@ -83,7 +83,7 @@ function shuffle(a) {
 export default {
 	data () {
 		return {
-			checkboxes:[false, false, false, false, false],
+			checkboxes:[false, false, false, false, false, false],
 			check: false
 		}
 	},
