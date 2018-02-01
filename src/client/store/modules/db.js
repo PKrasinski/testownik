@@ -117,53 +117,15 @@ export default {
         "question": "Jak wygl\u0105da Transformata Fouriera (TF) funkcji okresowej",
             "answers": [{
                 "answer": "TF funkcji okresowej jest szeregiem impuls\u00f3w o cz\u0119stotliwo\u015bciach r\u00f3wnych wielokrotno\u015bci n*w0, gdzie w0 wyliczamy ze wzoru w0=2pi/T. Warto\u015bci tych impuls\u00f3w s\u0105 proporcjonalne do wielko\u015bci wsp\u00f3\u0142czynnik\u00f3w Fn z TSF",
-                "correct": true
+                "correct": false
             }, {
                 "answer": "TF funkcji okresowej jest funkcj\u0105 okresow\u0105",
                 "correct": false
             }, {
                 "answer": "TF funkcji okresowej nie istnieje, gdy\u017c funkcja okresowa nie spe\u0142nia warunku istnienia TF (ca\u0142ka z modu\u0142u funkcji w przedziale nieograniczonym powinna by\u0107 ograniczona)",
-                "correct": false
+                "correct": true
             }, {
                 "answer": "TF funkcji okresowej jest sum\u0105 fal o cz\u0119stotliwo\u015bciach r\u00f3wnych n*w0, gdzie w0 wyliczamy ze wzoru w0=2pi/T",
-                "correct": true
-            }, {
-                "answer": "TF funkcji okresowej jest funkcj\u0105 nieparzyst\u0105",
-                "correct": false
-            }]
-    },
-    "9": {
-        "question": "Co to jest w\u0142asno\u015b\u0107 pr\u00f3bkowa funkcji impulsowej?",
-            "answers": [{
-                "answer": "Funkcja impulsowa pomno\u017cona przez dowolny sygna\u0142 daje w wyniku sygna\u0142 spr\u00f3bkowany.",
-                "correct": true
-            }, {
-                "answer": "Funkcja impulsowa jest u\u017cywana do generowania pr\u00f3bek sygna\u0142u dla dyskretnej transformaty Fouriera.",
-                "correct": true
-            }, {
-                "answer": "Przesuni\u0119ta funkcja impulsowa pomno\u017cona przez funkcj\u0119 f(t) daje w wyniku warto\u015b\u0107\u00a0tej funkcji w punkcie przesuni\u0119cia.",
-                "correct": false
-            }, {
-                "answer": "Funkcja impulsowa powsta\u0142a jako granica funkcji pr\u00f3bkowej.",
-                "correct": false
-            }, {
-                "answer": "Funkcja impulsowa pomno\u017cona przez funkcj\u0119 f(t) daje w wyniku warto\u015b\u0107\u00a0funkcji f(0)",
-                "correct": false
-            }]
-    },
-    "10": {
-        "question": "Jak wygl\u0105da transformata Fouriera (TF) funkcji okresowej?",
-            "answers": [{
-                "answer": "TF funkcji okresowej jest szeregiem impuls\u00f3w o cz\u0119stotliwo\u015bciach r\u00f3wnych wielokrotno\u015bci n*w0 gdzie w0 wyliczamy ze wzoru w0=2*pi/T. Warto\u015bci tych impuls\u00f3w s\u0105 proporcjonalne do wielko\u015bci wsp\u00f3\u0142czynnik\u00f3w Fn z TSF",
-                "correct": false
-            }, {
-                "answer": "TF funkcji okresowej jest funkcj\u0105 okresow\u0105",
-                "correct": false
-            }, {
-                "answer": "TF funkcji okresowej nie istnieje, gdy\u017c funkcja okresowa nie spe\u0142nia warunku istnienia TF (ca\u0142ka z modu\u0142u funkcji w przedziale nieograniczonym powinna by\u0107 ograniczona).",
-                "correct": true
-            }, {
-                "answer": "TF funkcji okresowej jest sum\u0105 fal o cz\u0119stotliwo\u015bciach r\u00f3wnych n*w0, gdzie w0 wyliczamy ze wzoru w0 = 2*pi/T",
                 "correct": false
             }, {
                 "answer": "TF funkcji okresowej jest funkcj\u0105 nieparzyst\u0105",
