@@ -1,5 +1,5 @@
 <template>
-    <v-app :dark="dark" v-if="ready">
+    <v-app :dark="dark" v-if="ready" class="pb-5">
 		<v-fab-transition>
 			<v-btn
 				fab

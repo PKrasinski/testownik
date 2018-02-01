@@ -23,7 +23,9 @@ const getters = {
         return db[state.user.questions[0]];
     },
     stats() {
-        return state.user.stats;
+        const stats = state.user.stats;
+        stats.to_learn = state.user.questions.length;
+        return stats;
     }
 }
 
@@ -56,6 +58,13 @@ const mutations = {
         state.user = {};
         state.auth = false;
         Vue.cookie.delete('token');
+    },
+    correct(state) {
+        state.user.stats.correct += 1;
+        state.user.questions.shift();
+    },
+    discorrect() {
+
     }
 }
 

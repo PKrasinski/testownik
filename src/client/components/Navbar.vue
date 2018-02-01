@@ -1,5 +1,5 @@
 <template>
-    <v-bottom-nav absolute :value="true" color="orange">
+    <v-bottom-nav :value="true" color="orange">
         <v-btn dark>
             <span>Ucz się</span>
             <v-icon>ondemand_video</v-icon>

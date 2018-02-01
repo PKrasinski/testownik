@@ -21,6 +21,7 @@ userSchema.methods.getToResponse = function () {
     return {
         username: this.username,
         questions: this.questions,
+        stats: this.stats,
         token: getJWT(this._id)
     }
 }
